@@ -27,7 +27,7 @@ import numpy as np
 import math
 
 
-def main(qu, qv, et, dl, initial_guess=0.05, threshold=0.025):
+def main(qu, qv, et, dl, initial_guess=0.05):
 
     # convert all to numpy arrays
     qu = np.array(qu)
@@ -61,12 +61,12 @@ def main(qu, qv, et, dl, initial_guess=0.05, threshold=0.025):
         total_flux_in += inflow
 
     print('Getting recycling ratios')
-    local_rr = get_local_rr(initial_rr, total_flux_in, inflow_from_E, inflow_from_W, inflow_from_N, inflow_from_S, EA, threshold=threshold)
+    local_rr = get_local_rr(initial_rr, total_flux_in, inflow_from_E, inflow_from_W, inflow_from_N, inflow_from_S, EA)
 
     return(local_rr)
 
 
-def get_local_rr(initial_rr, total_flux_in, inflow_from_E, inflow_from_W, inflow_from_N, inflow_from_S, EA, threshold=0.025, N_limit=500):
+def get_local_rr(initial_rr, total_flux_in, inflow_from_E, inflow_from_W, inflow_from_N, inflow_from_S, EA, N_limit=500):
 
     N = 0
     previous_rr = None
